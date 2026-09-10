@@ -5,7 +5,11 @@ import { ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-col min-h-screen min-w-full bg-background max-h-screen">
+    <div
+      className="flex flex-col min-h-screen min-w-full max-h-screen 
+          bg-[#01030a]
+            dark:bg-background"
+    >
       <nav className="flex justify-between items-center border-b border-border h-15 px-4 py-2">
         <div className="min-w-47.5">
           <Logo />
