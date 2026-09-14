@@ -60,3 +60,17 @@ export async function CreateForm(data: FormSchemaType) {
 
   if (!form) throw new Error("something went wrong");
 }
+
+export async function GetForms() {
+  const user = await currentUser();
+  if (!user) throw new UserNotFoundError();
+
+  return await prisma.form.findMany({
+    where: {
+      userId: user.id,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+}

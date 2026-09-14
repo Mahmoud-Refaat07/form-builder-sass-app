@@ -20,8 +20,11 @@ import { Field, FieldError, FieldLabel } from "./ui/field";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { CreateForm } from "@/actions/form";
+import { useRouter } from "next/navigation";
 
 function CreateFormButton() {
+  const router = useRouter();
+
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
   });
@@ -31,6 +34,7 @@ function CreateFormButton() {
     try {
       const formId = await CreateForm(values);
       console.log(formId);
+      router.push(`/builder/${formId}`);
     } catch (error) {
       console.log("ERORRRRR", error);
     }
