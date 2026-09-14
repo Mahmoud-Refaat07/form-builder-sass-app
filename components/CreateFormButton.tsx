@@ -27,6 +27,10 @@ function CreateFormButton() {
 
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      description: "",
+    },
   });
 
   async function onSubmit(values: FormSchemaType) {

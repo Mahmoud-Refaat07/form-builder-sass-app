@@ -59,6 +59,8 @@ export async function CreateForm(data: FormSchemaType) {
   });
 
   if (!form) throw new Error("something went wrong");
+
+  return form.id;
 }
 
 export async function GetForms() {
