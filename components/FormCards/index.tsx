@@ -72,7 +72,7 @@ export function FormCard({ form }: { form: Form }) {
           </Button>
         )}
         {!form.published && (
-          <Button className="w-full mt-2 text-md gap-4">
+          <Button className="w-full mt-2 text-md gap-4" variant={"secondary"}>
             <Link
               href={`/builder/${form.id}`}
               className="flex justify-center items-center gap-2"
