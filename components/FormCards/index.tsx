@@ -75,7 +75,7 @@ export function FormCard({ form }: { form: Form }) {
           <Button className="w-full mt-2 text-md gap-4" variant={"secondary"}>
             <Link
               href={`/builder/${form.id}`}
-              className="flex justify-center items-center gap-2"
+              className="flex w-full items-center justify-center gap-2"
             >
               Edit form <FaEdit />
             </Link>
