@@ -1,13 +1,32 @@
-import { DragOverlay, useDndMonitor } from "@dnd-kit/core";
+import { Active, DragOverlay, useDndMonitor } from "@dnd-kit/core";
+import { useState } from "react";
+import { SidebarButtonElementDragOverlay } from "./FormBuilder/SidebarButtonElement";
+import { ElementsType, FormElements } from "./FormElements";
 
 export default function DragOverlayWrapper() {
+  const [draggedItem, setDraggedItem] = useState<Active | null>(null);
+
   useDndMonitor({
     onDragStart: (event) => {
-      console.log("DRAG ITEM", event);
+      setDraggedItem(event.active);
+    },
+    onDragCancel: () => {
+      setDraggedItem(null);
+    },
+    onDragEnd: () => {
+      setDraggedItem(null);
     },
   });
-  const node = (
-    <div className="bg-red-500 text-white p-4 text-xl">No drag overlay</div>
-  );
+  if (!draggedItem) return null;
+
+  let node = <div>No drag overlay</div>;
+
+  const isSidebarButtonElement =
+    draggedItem.data?.current?.isDesignerButtonElement;
+
+  if (isSidebarButtonElement) {
+    const type = draggedItem.data?.current?.type as ElementsType;
+    node = <SidebarButtonElementDragOverlay formElement={FormElements[type]} />;
+  }
   return <DragOverlay>{node}</DragOverlay>;
 }

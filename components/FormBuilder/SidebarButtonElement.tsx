@@ -22,12 +22,12 @@ export default function SidebarButtonElement({
   return (
     <Button
       ref={draggable.setNodeRef}
-      className={`flex flex-col gap-2 h-[120px] w-[120px] cursor-grab ${draggable.isDragging && "ring-2 ring-primary"}`}
+      className={`flex flex-col gap-2 h-30 w-30 cursor-grab ${draggable.isDragging && "ring-2 ring-primary"}`}
       variant={"outline"}
       {...draggable.listeners}
       {...draggable.attributes}
     >
-      <Icon className="w-8 h-8 text-secondary curosr-grab" />
+      <Icon className="w-8 h-8  curosr-grab text-white" />
       <p className="text-xs">{label}</p>
     </Button>
   );
@@ -49,7 +49,7 @@ export function SidebarButtonElementDragOverlay({
 
   return (
     <Button
-      className={`flex flex-col gap-2 h-[120px] w-[120px] cursor-grab`}
+      className={`flex flex-col gap-2 h-30 w-30 cursor-grab`}
       variant={"outline"}
       {...draggable.listeners}
       {...draggable.attributes}
